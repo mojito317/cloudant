@@ -38,7 +38,7 @@ You can clone/download directly this repository
 2. Build the program with the help of maven:
 ``mvn package``
     * If everything went well you must get a message with `BUILD SUCCESS` in it, something like this:
-    ![build success][img/build_success.png]
+    ![build success](img/build_success.png)
 
 ## Run
 
