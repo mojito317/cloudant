@@ -11,16 +11,17 @@ import documents.Point;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static services.CalculatorService.getCeilOfDecimal;
+import static services.CalculatorService.getFloorOfDecimal;
 
 public class AirportService {
 
-    public List<AirportDocument> filterAndSort(Double radius, Point center, Predicate<AirportDocument> predicate,
-                                               Properties properties) {
+    public List<AirportDocument> sort(Double radius, Point center,
+                                      Properties properties) {
         List<AirportDocument> airportDocuments = getAirportSearch(radius, center, properties);
         return airportDocuments.stream()
-                .filter(p -> predicate.test(p))
                 .sorted(new DistanceComparator(center))
                 .collect(Collectors.toList());
     }
@@ -32,8 +33,8 @@ public class AirportService {
         AirportDbClient airportDbClient = new AirportDbClient(search);
 
         List<AirportDocument> airportDocuments = airportDbClient.getAirPortsByLongitudeAndLatitude(
-                center.getLon() - radius, center.getLon() + radius,
-                center.getLat() - radius, center.getLat() + radius);
+                getFloorOfDecimal(center.getLon() - radius), getCeilOfDecimal(center.getLon() + radius),
+                getFloorOfDecimal(center.getLat() - radius), getCeilOfDecimal(center.getLat() + radius));
 
         return airportDocuments;
     }

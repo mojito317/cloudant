@@ -21,4 +21,16 @@ public class CalculatorServiceTest {
         Point point = new Point(53.630389, 9.988228);
         assertEquals(0.0, CalculatorService.getDistanceFromCenterToAirport(point, airportDocument), 0.0);
     }
+
+    @Test
+    public void getCeilOfDecimal() {
+        assertEquals(CalculatorService.getCeilOfDecimal(3.416), 3.5, 0.0);
+        assertEquals(CalculatorService.getCeilOfDecimal(1233.8716), 1233.9, 0.0);
+    }
+
+    @Test
+    public void getFloorOfDecimal() {
+        assertEquals(CalculatorService.getFloorOfDecimal(3.416), 3.4, 0.0);
+        assertEquals(CalculatorService.getFloorOfDecimal(1233.8716), 1233.8, 0.0);
+    }
 }

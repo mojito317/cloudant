@@ -39,7 +39,7 @@ public class AirportsAppTest {
         List<AirportDocument> documents = new
                 ArrayList<>();
         documents.add(new AirportDocument(3.0, 2.0, "Michigan"));
-        when(airportService.filterAndSort(any(), any(), any(), any())).thenReturn(documents);
+        when(airportService.sort(any(), any(), any())).thenReturn(documents);
 
         String command = "1 3.0 2.0";
         String[] args = command.split(" ");
@@ -67,7 +67,7 @@ public class AirportsAppTest {
     public void runExceptionOccur() {
         String command = "1 2 3";
         String[] args = command.split(" ");
-        when(airportService.filterAndSort(any(), any(), any(), any())).thenThrow(new RuntimeException());
+        when(airportService.sort(any(), any(), any())).thenThrow(new RuntimeException());
         app.run(args);
 
         assertThat(outContent.toString(), containsString("Something went wrong. Please try to run the application again."));

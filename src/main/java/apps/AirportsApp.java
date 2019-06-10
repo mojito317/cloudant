@@ -7,7 +7,6 @@ import services.CalculatorService;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.function.Predicate;
 
 import static java.text.MessageFormat.format;
 
@@ -28,11 +27,8 @@ public class AirportsApp {
             prop.setProperty("db.name", "airportdb");
             prop.setProperty("db.search", "view1/geo");
 
-            Predicate<AirportDocument> predicate =
-                    p -> CalculatorService.getDistanceFromCenterToAirport(center, p) <= radius;
 
-
-            List<AirportDocument> results = airportService.filterAndSort(radius, center, predicate, prop);
+            List<AirportDocument> results = airportService.sort(radius, center, prop);
 
             for (int i = 0; i < results.size(); i++) {
                 AirportDocument result = results.get(i);
