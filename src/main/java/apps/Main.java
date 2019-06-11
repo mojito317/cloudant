@@ -1,5 +1,7 @@
-import apps.AirportsApp;
+package apps;
+
 import services.AirportService;
+
 
 public class Main {
     public static void main(String[] args) {
