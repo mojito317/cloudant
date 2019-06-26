@@ -56,7 +56,7 @@ You can clone/download directly this repository
   * the second the **latitude**
   * the third the **longitude**
   * E. g. when we want 5 degree radius, from 53.630389 degree latitude and 9.988228 degree longitude we should type the following:
-    ``java -cp target/classes apps.Main 5.0 53.630389 9.988228``
+    ``java -cp "target/*;target/dependency/*" apps.Main 5.0 53.630389 9.988228``
 ### From IntelliJ
 1. Right click on the Main class (left side of your window)
     1. Run Main.main()

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-import static java.text.MessageFormat.format;
 
 public class AirportDbClient {
     private final Search search;
